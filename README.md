@@ -20,7 +20,7 @@ Instructions:
 5. In the script enter the following:
 
 "#!/bin/bash <p>
-java src/cse237/ <p>
-java -cp src cse.237.Snowii"
+java src/cse237/*.java <p>
+java -cp src cse237.Snowii"
   
  6. Enter "./run.sh"
