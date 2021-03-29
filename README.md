@@ -4,10 +4,10 @@ An app that provides snow conditions at various resorts. Great for last minute p
 Completed user stories:
 - User collects snow conditions data from the internet
 - User receives a table of data about snow conditions
+- User gets data of snow conditions over multiple days
 
 User stories for next iteration:
 
-- User gets data of snow conditions over multiple days
 - User inputs desired location to get snow conditions
 
 Everything works
