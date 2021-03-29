@@ -10,9 +10,7 @@ User stories for next iteration:
 - User gets data of snow conditions over multiple days
 - User inputs desired location to get snow conditions
 
-Error:
-
-- Cannot connect to website
+Everything works
 
 Instructions:
 1. Go onto command prompt
