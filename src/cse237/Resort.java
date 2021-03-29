@@ -40,16 +40,16 @@ public class Resort {
         if (index >= 0) {
             return site.substring(0, index);
         }
-        return "";
+        return "error";
     }
 
 
     private String Pare(String site, String phrase) {
         int index = site.indexOf(phrase);
         if (index >= 0) {
-            return site.substring(index);
+            return site.substring(index  + phrase.length());
         }
-        return "";
+        return "error";
     }
 
 
@@ -69,7 +69,7 @@ public class Resort {
 
         for(int i = 0; i < DAYS_SNOW_REPORTED; i++) {
             paredsite = Pare(paredsite, "\"bluePill\">");
-            String dataHolder = EndPare(paredsite, "\"</div>");
+            String dataHolder = EndPare(paredsite, "\"");
             int data = Integer.parseInt(dataHolder);
 
             snowdata.add(data);
