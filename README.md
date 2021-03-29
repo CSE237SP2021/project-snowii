@@ -19,7 +19,7 @@ Instructions:
 4. Enter "vi run.sh"
 5. In the script enter the following:
 
-"!/bin/bash <p>
+"#!/bin/bash <p>
 java src/cse237/ <p>
 java -cp src cse.237.Snowii"
   
