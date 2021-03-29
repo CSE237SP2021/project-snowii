@@ -25,4 +25,4 @@ Instructions:
 java src/cse237/ <p>
 java -cp src cse.237.Snowii"
   
- 6. Enter ./run.sh
+ 6. Enter "./run.sh"
