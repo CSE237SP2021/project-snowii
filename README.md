@@ -15,12 +15,5 @@ Everything works
 Instructions:
 1. Go onto command prompt
 2. Enter "bash"
-3. Change directories to src/cse237
-4. Enter "vi run.sh"
-5. In the script enter the following:
-
-"#!/bin/bash <p>
-java src/cse237/*.java <p>
-java -cp src cse237.Snowii"
-  
- 6. Enter "./run.sh"
+3. Switch to "development" branch
+4. Enter "./run.sh"
