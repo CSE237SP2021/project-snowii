@@ -53,7 +53,7 @@ public class Resort {
     }
 
 
-    public int[] GetSnowData() throws Exception {
+    public int[] getSnowData() throws Exception {
 
         // Query the new info
 
