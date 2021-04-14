@@ -22,7 +22,7 @@ class Snowii {
             Resort resort = resorts.get(i);
             System.out.println("Current resort: " + resort_exts[i]);
             try {
-                int[] data = resort.GetSnowData();
+                int[] data = resort.getSnowData();
                 for (int j = 0; j < data.length; j++) {
                     System.out.println("Day " + (j+1) + ": " + data[j] + " inches");
                 }

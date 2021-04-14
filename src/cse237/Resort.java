@@ -12,7 +12,7 @@ public class Resort {
     public String queryName;
 
 
-    private String BeautifyName(String name){
+    private String beautifyName(String name){
         name = Pare(name, "/");
         name.replace("-", " ");
         return name;
@@ -21,10 +21,10 @@ public class Resort {
     public Resort(String qName) {
 
         queryName = qName;
-        name = BeautifyName(queryName);
+        name = beautifyName(queryName);
     }
 
-    private String InitialPare(String site) {
+    private String initialPare(String site) {
         // The info we are looking for is always contained between the following listed elements
         // Find the first element and the second which encompass the info we are looking for
         int iIndex = site.indexOf("<ul class=\"sr_snowfall_days scroller\"><li class=\" \"><div class=\"time\">");
@@ -35,7 +35,7 @@ public class Resort {
         return retstring;
     }
 
-    private String EndPare(String site, String phrase) {
+    private String endPare(String site, String phrase) {
         int index = site.indexOf(phrase);
         if (index >= 0) {
             return site.substring(0, index);
@@ -62,14 +62,14 @@ public class Resort {
 
         String website = inbuff.lines().collect(Collectors.joining());
 
-        String paredsite = InitialPare(website);
+        String paredsite = initialPare(website);
 
         List<Integer> snowdata = new ArrayList<Integer>();
 
 
         for(int i = 0; i < DAYS_SNOW_REPORTED; i++) {
             paredsite = Pare(paredsite, "\"bluePill\">");
-            String dataHolder = EndPare(paredsite, "\"");
+            String dataHolder = endPare(paredsite, "\"");
             int data = Integer.parseInt(dataHolder);
 
             snowdata.add(data);
