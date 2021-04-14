@@ -1,5 +1,5 @@
 # Snowii
-An app that provides snow conditions at various resorts. Great for last minute planning for a ski trip.
+An app that provides snow conditions at various resorts that are found on https://www.onthesnow.com/. Great for last minute planning for a ski trip.
 ## Iteration 1
 Completed user stories:
 - User collects snow conditions data from the internet
@@ -17,3 +17,5 @@ Instructions:
 2. Enter "bash"
 3. Switch to "development" branch
 4. Enter "./run.sh"
+  a. Add two more arguments: Location of Resort(State) and Resort Name
+  b. Otherwise, the console will print out a default set of resorts
