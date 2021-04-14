@@ -1,5 +1,8 @@
 # Snowii
 An app that provides snow conditions at various resorts that are found on https://www.onthesnow.com/. Great for last minute planning for a ski trip.
+
+Note: Isaiah left the group, so there are no javadocs and additional tests
+
 ## Iteration 2
 Completed user stories:
 - User collects snow conditions data from the internet
