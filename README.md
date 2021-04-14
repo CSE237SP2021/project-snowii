@@ -1,14 +1,16 @@
 # Snowii
 An app that provides snow conditions at various resorts that are found on https://www.onthesnow.com/. Great for last minute planning for a ski trip.
-## Iteration 1
+## Iteration 2
 Completed user stories:
 - User collects snow conditions data from the internet
 - User receives a table of data about snow conditions
 - User gets data of snow conditions over multiple days
+- User inputs desired location to get snow conditions
 
 User stories for next iteration:
 
-- User inputs desired location to get snow conditions
+- User gets warning for for avalanches
+- User creates a list of desired locations for comparison
 
 Everything works
 
