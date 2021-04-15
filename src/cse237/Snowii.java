@@ -11,7 +11,7 @@ class Snowii {
 
 		// Create a default list of resorts based on the array of extensions
 		if (args.length == 0) {
-			String[] resort_exts = createTable(resorts);
+			String[] resort_exts = createDefaultTable(resorts);
 			// Print info to terminal
 			printDefaultTable(resorts, resort_exts);
 		}
@@ -59,7 +59,7 @@ class Snowii {
 		}    
 	}
 
-	private static String[] createTable(List<Resort> resorts) {
+	private static String[] createDefaultTable(List<Resort> resorts) {
 		String resort_exts[] = new String[]{"wyoming/jackson-hole",
 				"colorado/vail",
 				"colorado/beaver-creek",

@@ -10,21 +10,20 @@ public class Resort {
     static final int DAYS_SNOW_REPORTED = 9;
     public String name;
     public String queryName;
-
-
-    private String beautifyName(String name){
-        name = Pare(name, "/");
-        name.replace("-", " ");
+    
+    //Changes resort name from URL form to normal
+    public String beautifyName(String name){
+    	name = pare(name, "/");
+        name = name.replace("-", " ");
         return name;
     }
 
     public Resort(String qName) {
-
         queryName = qName;
         name = beautifyName(queryName);
     }
 
-    private String initialPare(String site) {
+    public String initialPare(String site) {
         // The info we are looking for is always contained between the following listed elements
         // Find the first element and the second which encompass the info we are looking for
         int iIndex = site.indexOf("<ul class=\"sr_snowfall_days scroller\"><li class=\" \"><div class=\"time\">");
@@ -35,7 +34,7 @@ public class Resort {
         return retstring;
     }
 
-    private String endPare(String site, String phrase) {
+    public String endPare(String site, String phrase) {
         int index = site.indexOf(phrase);
         if (index >= 0) {
             return site.substring(0, index);
@@ -44,32 +43,31 @@ public class Resort {
     }
 
 
-    private String Pare(String site, String phrase) {
+    public String pare(String site, String phrase) {
         int index = site.indexOf(phrase);
         if (index >= 0) {
             return site.substring(index  + phrase.length());
         }
         return "error";
     }
-
-
+    
+    //Gets snow data for each resort
     public int[] getSnowData() throws Exception {
 
-        // Query the new info
-
+        //Query the new info
         URL siteurl = new URL("https://www.onthesnow.com/"+ queryName + "/skireport.html");
         BufferedReader inbuff = new BufferedReader(new InputStreamReader(siteurl.openStream()));
 
         String website = inbuff.lines().collect(Collectors.joining());
 
-        String paredsite = initialPare(website);
+        String paredSite = initialPare(website);
 
         List<Integer> snowdata = new ArrayList<Integer>();
 
 
         for(int i = 0; i < DAYS_SNOW_REPORTED; i++) {
-            paredsite = Pare(paredsite, "\"bluePill\">");
-            String dataHolder = endPare(paredsite, "\"");
+            paredSite = pare(paredSite, "\"bluePill\">");
+            String dataHolder = endPare(paredSite, "\"");
             int data = Integer.parseInt(dataHolder);
 
             snowdata.add(data);
