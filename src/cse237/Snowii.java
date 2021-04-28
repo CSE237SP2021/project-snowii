@@ -3,32 +3,43 @@ package cse237;
 import java.util.ArrayList;
 import java.util.List;
 
-class Snowii {
+public class Snowii {
 
 	public static void main(String[] args) {
-
 		List<Resort> resorts = new ArrayList<Resort>();
+		Snowii snowii = new Snowii();
 
 		// Create a default list of resorts based on the array of extensions
 		if (args.length == 0) {
-			String[] resort_exts = createDefaultTable(resorts);
+			String[] resort_exts = snowii.createDefaultTable(resorts);
 			// Print info to terminal
-			printDefaultTable(resorts, resort_exts);
+			snowii.printDefaultTable(resorts, resort_exts);
 		}
 
 		//Create a list of user-inputed resort
 		else if (args.length == 2) {
-			String stateName = args[0].toLowerCase();
-			String resortName = args[1];
-			String lowerResortName = resortName.toLowerCase();
-			String urlName = stateName + "/" + lowerResortName;
-			Resort userResort = new Resort(urlName);
+			Resort userResort = new Resort(snowii.getUrlName(args, snowii));
 			// Print info to terminal
-			printUserTable(resortName, userResort);
+			snowii.printUserTable(snowii.getResortName(args), userResort);
 		}
 	}
 
-	private static void printDefaultTable(List<Resort> resorts, String[] resort_exts) {
+	public String getStateName(String[] args) {
+		String stateName = args[0].toLowerCase();
+		return stateName;
+	}
+	
+	public String getResortName(String[] args) {
+		String resortName = args[1];
+		return resortName;
+	}
+
+	public String getUrlName(String[] args, Snowii snowii) {
+		String urlName = snowii.getStateName(args) + "/" + snowii.getResortName(args);
+		return urlName;
+	}
+	
+	public void printDefaultTable(List<Resort> resorts, String[] resort_exts) {
 		System.out.println("Snowii: 7-day snow forecast");
 		for(int i  = 0; i < resorts.size(); i++) {
 			Resort resort = resorts.get(i);
@@ -45,7 +56,7 @@ class Snowii {
 		}
 	}
 
-	private static void printUserTable(String definedResortName, Resort definedResort) {
+	public void printUserTable(String definedResortName, Resort definedResort) {
 		System.out.println("Snowii: 7-day snow forecast");
 		System.out.println("Resort: " + definedResortName);
 		try {
@@ -59,7 +70,7 @@ class Snowii {
 		}    
 	}
 
-	private static String[] createDefaultTable(List<Resort> resorts) {
+	public String[] createDefaultTable(List<Resort> resorts) {
 		String resort_exts[] = new String[]{"wyoming/jackson-hole",
 				"colorado/vail",
 				"colorado/beaver-creek",
@@ -77,7 +88,7 @@ class Snowii {
 		return resort_exts;
 	}
 
-	private static void addResort(List<Resort> resorts, String[] resort_exts) {
+	public void addResort(List<Resort> resorts, String[] resort_exts) {
 		for(int i = 0; i < resort_exts.length; i++) {
 			Resort resort = new Resort(resort_exts[i]);
 			resorts.add(resort);
