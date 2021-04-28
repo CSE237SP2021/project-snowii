@@ -50,34 +50,43 @@ public class Resort {
         }
         return "error";
     }
-    
-    //Gets snow data for each resort
-    public int[] getSnowData() throws Exception {
 
-        //Query the new info
-        URL siteurl = new URL("https://www.onthesnow.com/"+ queryName + "/skireport.html");
+    //Query the new info
+    public String formatURL() throws MalformedURLException, IOException {
+		URL siteurl = new URL("https://www.onthesnow.com/"+ queryName + "/skireport.html");
         BufferedReader inbuff = new BufferedReader(new InputStreamReader(siteurl.openStream()));
 
         String website = inbuff.lines().collect(Collectors.joining());
 
         String paredSite = initialPare(website);
-
-        List<Integer> snowdata = new ArrayList<Integer>();
-
-
-        for(int i = 0; i < DAYS_SNOW_REPORTED; i++) {
+		return paredSite;
+	}
+	
+	public void snowDataTable(String paredSite, List<Integer> snowdata) {
+		for(int i = 0; i < DAYS_SNOW_REPORTED; i++) {
             paredSite = pare(paredSite, "\"bluePill\">");
             String dataHolder = endPare(paredSite, "\"");
             int data = Integer.parseInt(dataHolder);
 
             snowdata.add(data);
         }
-
-        Object snowArray[] = snowdata.toArray();
+	}
+	
+	public int[] organizeTable(List<Integer> snowdata) {
+		Object snowArray[] = snowdata.toArray();
         int snowInts[] = new int[snowArray.length];
         for (int i = 0; i < snowArray.length; i++) {
             snowInts[i] = (int) snowArray[i];
         }
         return snowInts;
+	}
+	
+	//Gets snow data for each resort
+    public int[] getSnowData() throws Exception {
+        String paredSite = formatURL();
+        List<Integer> snowdata = new ArrayList<Integer>();
+        snowDataTable(paredSite, snowdata);
+
+        return organizeTable(snowdata);
     }
 }
