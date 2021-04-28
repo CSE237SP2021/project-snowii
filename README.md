@@ -16,5 +16,5 @@ Instructions:
 2. Enter "bash"
 3. Switch to "development" branch
 4. Enter "./run.sh" 
-    - Add two more arguments: Location of Resort(State) and Resort Name (If the state or resort has multiple words, replace space with "-")
+    - Add two more arguments: Location of Resort(State) and Resort Name
     - Otherwise, the console will print out a default set of resorts
